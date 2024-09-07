@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+    <h2>Portfolio</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Total Cash</th>
+                <th>Total Cash and Portfolio Value</th>
+            </tr>
+        </thead>
+        <tbhody>
+            <tr>
+                <td>{{curcash}}</td>
+                <td>{{grandtot}}</td>
+            </tr>
+        </tbhody>
+    </table>
+    <form action="/" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="cash" placeholder="add cash" type="number" min="0.01" step="0.01">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Current Price per share</th>
+                <th># Shares owned</th>
+                <th>Value of Holding</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for holding in portfolio %}
+                <tr>
+                    <td>{{holding.symbol}}</td>
+                    <td>{{holding.ppshare}}</td>
+                    <td>{{holding.shares}}</td>
+                    <td>{{holding.value}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

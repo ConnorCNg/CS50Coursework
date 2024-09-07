@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+<form action="/sell" method="post">
+    <select autofocus name="symbol">
+        {% for symbol in symbolsowned %}
+            <option value="{{symbol}}">{{symbol}}</option>
+        {% endfor %}
+    </select>
+    <input autocomplete="off" name="shares" placeholder="# shares" type="number" min="0" step="1">
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+<!--
+<form action="/sell" method="post">
+    <div class="row mb-3 g-0 justify-content-center">
+        <div class="col-auto" style="min-width 10%;">
+            <select autofocus name="symbol" class="form-select p-0" style="width: 30%;">
+                {% for symbol in symbolsowned %}
+                    <option value="{{symbol}}">{{symbol}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col" style="max-width: 15%;">
+            <input autocomplete="off" class="form-control p-0"name="shares" placeholder="# shares" type="number" min="0" step="1">
+        </div>
+        <div class="col" style="max-width: 15%;">
+            <button class="btn btn-primary p-0" type="submit">Submit</button>
+        </div>
+    </div>
+</form>
+-->
+{% endblock %}
